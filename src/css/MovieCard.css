@@ -1,0 +1,134 @@
+.movie-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  max-width: 400px
+}
+
+
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+/* Poster wrapper enforces 2:3 ratio */
+.movie-poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3; /* keeps all posters same ratio */
+  background: #222; /* fallback if no image */
+}
+
+/* Image fills wrapper, never stretches */
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay gradient appears on hover */
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.85));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+/* Favorite button */
+.favorite-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.4rem;
+  background-color: rgba(0,0,0,0.55);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.favorite-btn:hover {
+  background-color: rgba(0,0,0,0.8);
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #ff4757;
+}
+
+/* Movie info section */
+.movie-info {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.movie-info h3 {
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.movie-info p {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* User rating (if used) */
+.user-rating {
+  color: #ffd700;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .movie-card {
+    font-size: 0.9rem;
+  }
+
+  .movie-info {
+    padding: 0.75rem;
+  }
+
+  .favorite-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    border-radius: 8px;
+  }
+
+  .movie-info h3 {
+    font-size: 0.95rem;
+  }
+}
